@@ -14,7 +14,7 @@ tipoSelect.addEventListener('change', () => {
   }
 });
 
-textoArea.addEventListener('input', (e) => {
+textoArea.addEventListener('input', () => {
   const start = textoArea.selectionStart;
   const end = textoArea.selectionEnd;
   textoArea.value = textoArea.value.toUpperCase();
@@ -25,10 +25,11 @@ function formatarTexto() {
   const linhasOriginais = textoArea.value.toUpperCase().split('\n');
   const linhasFormatadas = [];
 
+  // Alterado para fatiar a cada 75 caracteres
   linhasOriginais.forEach(linha => {
     while (linha.length > 0) {
-      linhasFormatadas.push(linha.slice(0, 30));
-      linha = linha.slice(30);
+      linhasFormatadas.push(linha.slice(0, 75));
+      linha = linha.slice(75);
     }
   });
 
@@ -44,16 +45,16 @@ function formatarTexto() {
       const tag = '>>>>>F8>>>>>';
       const primeiraLinha = bloco[0];
 
-      if (primeiraLinha.length + tag.length <= 30) {
+      if (primeiraLinha.length + tag.length <= 75) {
         bloco[0] += tag;
       } else {
-        const disponivel = 30 - tag.length;
+        const disponivel = 75 - tag.length;
         bloco[0] = primeiraLinha.slice(0, disponivel) + tag;
         bloco.splice(1, 0, primeiraLinha.slice(disponivel));
       }
     }
 
-    const blocoFormatado = bloco.map(l => l.padEnd(30)).join('\n');
+    const blocoFormatado = bloco.map(l => l.padEnd(75)).join('\n');
 
     const card = document.createElement('div');
     card.className = 'card';
