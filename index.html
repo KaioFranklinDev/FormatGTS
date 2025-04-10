@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Ordem de Serviço</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Ordem de Serviço</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <h2>Ordem de Serviço</h2>
-  <label for="tipo">Selecione:</label>
-  <select id="tipo">
-    <option value="">-- Escolha --</option>
-    <option value="ABERTURA">Abertura</option>
-    <option value="FECHAMENTO">Fechamento</option>
-  </select>
+    <main>
+        <h2>Ordem de Serviço</h2>
+        <label for="tipo">Selecione:</label>
+        <select id="tipo">
+            <option value="">-- Escolha --</option>
+            <option value="ABERTURA">Abertura</option>
+            <option value="FECHAMENTO">Fechamento</option>
+        </select>
 
-  <div id="campoTexto" class="hidden">
-    <label for="texto">Texto:</label>
-    <textarea id="texto"></textarea>
-  </div>
+        <div id="campoTexto" class="hidden">
+            <label for="texto">Texto:</label>
+            <textarea id="texto"></textarea>
+        </div>
 
-  <button onclick="formatarTexto()">Formatar</button>
-  <button onclick="resetarTudo()">Resetar</button>
+        <button onclick="formatarTexto()">Formatar</button>
+        <button onclick="resetarTudo()">Resetar</button>
 
-  <div id="resultado"></div>
-  <footer>
-    kaio.franklin.dev &reg;
-  </footer>
+        <div id="resultado"></div>
+    </main>
+    <footer>
+        kaio.franklin.dev &reg;
+    </footer>
 
-  <script src="scripts.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
+
 </html>
