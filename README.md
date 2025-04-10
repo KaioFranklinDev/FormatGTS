@@ -1,0 +1,1 @@
+a simple html local, just open!
