@@ -7,7 +7,18 @@ tipoSelect.addEventListener('change', () => {
   const tipo = tipoSelect.value;
   if (tipo) {
     campoTexto.classList.remove('hidden');
-    textoArea.value = `*${tipo}*\nRAT:\nNOME TECNICO:\nNOME CLIENT:`;
+    textoArea.value = `* ENCERRAMENTO DO REPARO *\n
+&&& MAMINFO\n
+
+- MSG DE ENCERRAMENTO\n
+NUMERO DO RAT: \n
+NOME DO TECNICO: \n
+NOME E CONTATO DO CLIENTE QUE CONCORDA COM O LAUDO: \n
+NOME E CONTATO DO RECLAMANTE QUE CONFIRMA NORMALIZAÇÃO: \n
+PROBLEMA ENCONTRADO: \n
+CAUSA RAIZ: \n
+ACAO CORRETIVA EXECUTADA: \n
+CODIGO DE ENCERRAMENTO: `;
   } else {
     campoTexto.classList.add('hidden');
     textoArea.value = '';
