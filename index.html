@@ -3,39 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Ordem de Serviço</title>
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eceff1; padding: 30px; }
-    .hidden { display: none; }
-    textarea { width: 100%; height: 120px; text-transform: uppercase; white-space: pre; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
-    .card {
-      margin-bottom: 20px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .bloco {
-      padding: 10px;
-      background-color: #f7f7f7;
-      border-radius: 8px;
-      white-space: pre-wrap;
-      margin-bottom: 10px;
-    }
-    .copiado { background-color: #a5d6a7 !important; color: #1b5e20 !important; }
-    button {
-      padding: 6px 12px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover { background-color: #cfd8dc; }
-    button.copiado { background-color: #66bb6a; color: #fff; }
-    select { padding: 6px; border-radius: 5px; border: 1px solid #ccc; }
-    label { font-weight: bold; }
-    #resultado { margin-top: 20px; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h2>Ordem de Serviço</h2>
@@ -55,94 +23,10 @@
   <button onclick="resetarTudo()">Resetar</button>
 
   <div id="resultado"></div>
+  <footer>
+    kaio.franklin.dev &reg;
+  </footer>
 
-  <script>
-    const tipoSelect = document.getElementById('tipo');
-    const campoTexto = document.getElementById('campoTexto');
-    const textoArea = document.getElementById('texto');
-    const resultado = document.getElementById('resultado');
-
-    tipoSelect.addEventListener('change', () => {
-      const tipo = tipoSelect.value;
-      if (tipo) {
-        campoTexto.classList.remove('hidden');
-        textoArea.value = `*${tipo}*\nRAT: \nNOME TECNICO: \nNOME CLIENT: \nQUEM VALIDOU: \nDESCRIÇAO: `;
-      } else {
-        campoTexto.classList.add('hidden');
-        textoArea.value = '';
-      }
-    });
-
-    textoArea.addEventListener('input', (e) => {
-      const start = textoArea.selectionStart;
-      const end = textoArea.selectionEnd;
-      textoArea.value = textoArea.value.toUpperCase();
-      textoArea.setSelectionRange(start, end);
-    });
-
-    function formatarTexto() {
-      const linhasOriginais = textoArea.value.toUpperCase().split('\n');
-      const linhasFormatadas = [];
-
-      linhasOriginais.forEach(linha => {
-        while (linha.length > 0) {
-          linhasFormatadas.push(linha.slice(0, 30));
-          linha = linha.slice(30);
-        }
-      });
-
-      resultado.innerHTML = '';
-
-      const blocos = [];
-      for (let i = 0; i < linhasFormatadas.length; i += 10) {
-        blocos.push(linhasFormatadas.slice(i, i + 10));
-      }
-
-      blocos.forEach((bloco, index) => {
-        if (index < blocos.length - 1 && bloco.length > 0) {
-          const tag = '>>>>>F8>>>>>';
-          const primeiraLinha = bloco[0];
-          const espacoDisponivel = 30 - tag.length;
-          const inicio = primeiraLinha.slice(0, espacoDisponivel);
-          const sobra = primeiraLinha.slice(espacoDisponivel);
-
-          bloco[0] = inicio + tag;
-
-          if (sobra.length > 0) {
-            bloco.splice(1, 0, sobra);
-          }
-        }
-
-        const blocoFormatado = bloco.map(l => l.padEnd(30)).join('\n');
-
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        const div = document.createElement('div');
-        div.className = 'bloco';
-        div.textContent = blocoFormatado;
-
-        const btn = document.createElement('button');
-        btn.textContent = 'Copiar';
-        btn.onclick = () => {
-          navigator.clipboard.writeText(blocoFormatado).then(() => {
-            btn.classList.add('copiado');
-            btn.textContent = 'Copiado!';
-          });
-        };
-
-        card.appendChild(div);
-        card.appendChild(btn);
-        resultado.appendChild(card);
-      });
-    }
-
-    function resetarTudo() {
-      tipoSelect.value = '';
-      campoTexto.classList.add('hidden');
-      textoArea.value = '';
-      resultado.innerHTML = '';
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>

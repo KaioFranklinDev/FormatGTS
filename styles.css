@@ -1,0 +1,81 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eceff1;
+    padding: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    text-transform: uppercase;
+    white-space: pre;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bloco {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+}
+
+.copiado {
+    background-color: #a5d6a7 !important;
+    color: #1b5e20 !important;
+}
+
+button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #cfd8dc;
+}
+
+button.copiado {
+    background-color: #66bb6a;
+    color: #fff;
+}
+
+select {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+label {
+    font-weight: bold;
+}
+
+#resultado {
+    margin-top: 20px;
+}
+
+footer {
+    position: sticky;
+    bottom: 0px;
+    width: 95vw;
+    text-align: center;
+    color: #b0b0b0;
+    font-size: 0.9em;
+}
